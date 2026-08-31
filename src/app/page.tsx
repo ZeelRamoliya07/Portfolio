@@ -1,69 +1,432 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState } from "react";
+import {
+  BIO,
+  PORTFOLIO_TABS,
+  ABOUT_TABS,
+  EDUCATION,
+  EXPERIENCE,
+  PROJECTS,
+  ACHIEVEMENTS,
+  CERTIFICATES,
+  PortfolioTab,
+  AboutTab,
+} from "../constants/data";
+import PixelCard from "../components/PixelCard";
+import RetroTabs from "../components/RetroTabs";
+import SkillGrid from "../components/SkillGrid";
 
 export default function Home() {
+  const [activePortfolioTab, setActivePortfolioTab] = useState<PortfolioTab>("projects");
+  const [activeAboutTab, setActiveAboutTab] = useState<AboutTab>("Education");
+  const [coinCount, setCoinCount] = useState<number>(0);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-[#0f0f23] text-[#f0f0f8] p-4 md:p-8 flex flex-col items-center">
+      {/* Top Banner / Retro Header */}
+      <header className="w-full max-w-6xl border-4 border-black bg-[#171730] p-4 mb-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <div className="w-16 h-16 bg-[#39ff14] border-4 border-black flex items-center justify-center font-pixel-heading text-black text-2xl font-bold select-none shrink-0 shadow-[2px_2px_0px_0px_#000]">
+            ZR
+          </div>
+          <div>
+            <h1 className="font-pixel-heading text-sm md:text-lg text-[#39ff14] neon-glow">
+              {BIO.name.toUpperCase()}
+            </h1>
+            <p className="text-sm font-mono text-[#00e5ff] uppercase tracking-wider">
+              {BIO.title} | LVL 2
+            </p>
+          </div>
+        </div>
+
+        {/* Stats Panel */}
+        <div className="flex flex-col gap-2 w-full md:w-auto font-mono text-xs md:text-sm">
+          <div className="flex items-center gap-2">
+            <span className="w-8 text-[#ff007f] font-bold">HP:</span>
+            <div className="pixel-progress-bar w-40 md:w-48 bg-[#23234a]">
+              <div className="h-full bg-[#ff007f] shadow-[inset_-4px_0_0_#99004d]" style={{ width: "90%" }} />
+            </div>
+            <span>90/100</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-8 text-[#00e5ff] font-bold">MP:</span>
+            <div className="pixel-progress-bar w-40 md:w-48 bg-[#23234a]">
+              <div className="h-full bg-[#00e5ff] shadow-[inset_-4px_0_0_#008fa3]" style={{ width: "85%" }} />
+            </div>
+            <span>85/100</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-8 text-[#ffff00] font-bold">XP:</span>
+            <div className="pixel-progress-bar w-40 md:w-48 bg-[#23234a]">
+              <div className="h-full bg-[#ffff00] shadow-[inset_-4px_0_0_#b3b300]" style={{ width: "78%" }} />
+            </div>
+            <span>7860/10000</span>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Grid Layout */}
+      <main className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        {/* Left Column: Character Stats & Objective (4 cols) */}
+        <section className="lg:col-span-4 space-y-8">
+          {/* Avatar & RPG Stats Card */}
+          <PixelCard title="Character Profile" variant="accent">
+            <div className="flex flex-col items-center pb-4 border-b-2 border-dashed border-[#39ff14] mb-4">
+              {/* Pixelated Avatar Art Placeholder */}
+              <div className="w-32 h-32 border-4 border-black bg-[#23234a] flex items-center justify-center p-2 mb-4 relative">
+                <div className="absolute inset-0 bg-[#0f0f23] opacity-20 bg-[radial-gradient(#39ff14_1px,transparent_1px)] [background-size:8px_8px]" />
+                <svg className="w-24 h-24 text-[#39ff14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+              </div>
+              <p className="font-pixel-heading text-[10px] text-[#ffff00] text-center">
+                GUILD: SVNIT SURAT
+              </p>
+            </div>
+
+            {/* RPG Stats list */}
+            <div className="space-y-3 font-mono text-base">
+              <div className="flex justify-between">
+                <span className="text-[#a0a0c0]">STR (Algorithms):</span>
+                <span className="text-[#39ff14] font-bold">18 / 20</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#a0a0c0]">AGI (Python/Code):</span>
+                <span className="text-[#39ff14] font-bold">19 / 20</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#a0a0c0]">INT (Machine Learning):</span>
+                <span className="text-[#39ff14] font-bold">17 / 20</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#a0a0c0]">STA (Django/Web):</span>
+                <span className="text-[#39ff14] font-bold">16 / 20</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#a0a0c0]">LUK (JEE Rank):</span>
+                <span className="text-[#ffff00] font-bold">99.35%</span>
+              </div>
+            </div>
+          </PixelCard>
+
+          {/* Terminal window style Career Objective */}
+          <div className="border-4 border-black bg-black p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] text-[#39ff14] font-mono text-sm leading-relaxed relative overflow-hidden">
+            <div className="flex justify-between items-center border-b-2 border-[#39ff14] pb-2 mb-3">
+              <span className="text-xs uppercase font-pixel-heading text-white">system_terminal.sh</span>
+              <div className="flex gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500 inline-block" />
+              </div>
+            </div>
+            <p className="mb-4">
+              <span className="text-white font-bold">&gt;_ cat career_objective.txt</span>
+              <br />
+              {BIO.careerObjective}
+            </p>
+            <div>
+              <span className="text-white font-bold">&gt;_ ls areas_of_interest/</span>
+              <ul className="list-disc pl-5 mt-1 space-y-1">
+                {BIO.areasOfInterest.map((interest) => (
+                  <li key={interest} className="text-[#00e5ff]">{interest}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-4 pt-3 border-t border-[#39ff14]/30">
+              <span className="text-white font-bold">&gt;_ echo $CONTACT_INFO</span>
+              <div className="mt-1 space-y-1 text-xs">
+                <div>Email: <a href={`mailto:${BIO.contact.email}`} className="underline hover:text-white">{BIO.contact.email}</a></div>
+                <div>Phone: {BIO.contact.phone}</div>
+                <div>
+                  Links: <a href={BIO.contact.github} target="_blank" rel="noopener noreferrer" className="underline hover:text-white mr-2">GitHub</a>
+                  <a href={BIO.contact.linkedin} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 animate-pulse">
+              <span>$ </span><span className="pixel-blink">█</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Right Column: Dynamic Tabs & Main Resume Data (8 cols) */}
+        <section className="lg:col-span-8 space-y-8">
+          
+          {/* Experience vs Education tab selection */}
+          <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <RetroTabs
+              tabs={ABOUT_TABS}
+              activeTab={activeAboutTab}
+              onChange={setActiveAboutTab}
+            />
+
+            {activeAboutTab === "Education" && (
+              <div className="space-y-6">
+                {EDUCATION.map((edu) => (
+                  <div key={edu.degree} className="border-l-4 border-[#39ff14] pl-4 py-2 space-y-2">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-1">
+                      <h4 className="font-pixel-heading text-xs md:text-sm text-[#00e5ff]">
+                        {edu.degree}
+                      </h4>
+                      <span className="text-xs text-[#ffff00] font-mono shrink-0">
+                        {edu.period.start} - {edu.period.end}
+                      </span>
+                    </div>
+                    <p className="font-mono text-sm text-[#a0a0c0]">
+                      {edu.institute}
+                    </p>
+                    <p className="text-base text-[#39ff14] font-bold">
+                      Grade: {edu.grade}
+                    </p>
+                    <ul className="list-disc pl-5 font-mono text-sm space-y-1 text-[#f0f0f8]/80">
+                      {edu.details.map((detail, idx) => (
+                        <li key={idx}>{detail}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+
+                {/* Key Courses Subsection */}
+                <div className="mt-6 pt-6 border-t-2 border-dashed border-[#23234a]">
+                  <h5 className="font-pixel-heading text-xs text-[#ffff00] mb-4">
+                    ACADEMIC QUEST LOG (KEY COURSES)
+                  </h5>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-sm">
+                    <div className="border-2 border-black bg-[#0b0b1a] p-3 shadow-[2px_2px_0_0_#000]">
+                      <span className="text-[#39ff14] font-bold uppercase block mb-2 border-b border-[#23234a] pb-1">
+                        Core CS
+                      </span>
+                      <ul className="list-disc pl-4 space-y-1 text-[#f0f0f8]/85">
+                        {BIO.keyCourses.coreCS.map((course) => (
+                          <li key={course}>{course}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="border-2 border-black bg-[#0b0b1a] p-3 shadow-[2px_2px_0_0_#000]">
+                      <span className="text-[#00e5ff] font-bold uppercase block mb-2 border-b border-[#23234a] pb-1">
+                        AI & ML
+                      </span>
+                      <ul className="list-disc pl-4 space-y-1 text-[#f0f0f8]/85">
+                        {BIO.keyCourses.aiML.map((course) => (
+                          <li key={course}>{course}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeAboutTab === "Experience" && (
+              <div className="space-y-6">
+                {EXPERIENCE.map((exp) => (
+                  <div key={exp.title} className="border-l-4 border-[#ff007f] pl-4 py-2 space-y-3">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-1">
+                      <h4 className="font-pixel-heading text-xs md:text-sm text-[#00e5ff]">
+                        {exp.title}
+                      </h4>
+                      <span className="text-xs text-[#ffff00] font-mono shrink-0">
+                        {exp.period.start} - {exp.period.end}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-sm font-mono text-[#a0a0c0]">
+                      <span>{exp.company} ({exp.type})</span>
+                      <span>{exp.location}</span>
+                    </div>
+                    <ul className="list-disc pl-5 font-mono text-sm space-y-1.5 text-[#f0f0f8]/80">
+                      {exp.bullets.map((bullet, idx) => (
+                        <li key={idx}>{bullet}</li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {exp.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="px-2 py-0.5 text-[10px] font-pixel-heading bg-[#23234a] text-[#39ff14] border border-black shadow-[1px_1px_0_0_#000]"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Skills Grid */}
+          <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-6 uppercase tracking-wider">
+              Skills & Equipment Inventory
+            </h3>
+            <SkillGrid />
+          </div>
+
+          {/* Projects / Achievements / Certificates Tabbed Showcase */}
+          <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <RetroTabs
+              tabs={PORTFOLIO_TABS}
+              activeTab={activePortfolioTab}
+              onChange={setActivePortfolioTab}
+            />
+
+            {/* Projects Tab */}
+            {activePortfolioTab === "projects" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {PROJECTS.map((proj) => (
+                  <div
+                    key={proj.title}
+                    className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000] hover:shadow-[4px_4px_0_0_#39ff14] transition-all"
+                  >
+                    <div>
+                      <div className="flex justify-between items-start gap-2 mb-2 pb-2 border-b border-[#23234a]">
+                        <h4 className="font-pixel-heading text-xs text-[#00e5ff] tracking-wide">
+                          {proj.title}
+                        </h4>
+                        <span className="text-[9px] font-mono text-[#a0a0c0] text-right shrink-0">
+                          {proj.role}
+                        </span>
+                      </div>
+                      <p className="font-mono text-sm text-[#f0f0f8]/90 mb-4">
+                        {proj.desc}
+                      </p>
+                      <ul className="list-disc pl-4 font-mono text-xs text-[#a0a0c0] mb-4 space-y-1">
+                        {proj.bullets.map((b, idx) => (
+                          <li key={idx}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="space-y-4">
+                      {/* Tech stack badges */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {proj.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="px-1.5 py-0.5 text-[8px] font-pixel-heading bg-[#23234a] text-[#ffff00] border border-black"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Links */}
+                      <div className="flex gap-2">
+                        {proj.live && (
+                          <a
+                            href={proj.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="pixel-btn text-[9px] py-1 px-2.5 bg-[#39ff14]"
+                          >
+                            DEMO
+                          </a>
+                        )}
+                        <a
+                          href={proj.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5 bg-[#ff007f]"
+                        >
+                          GITHUB
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Achievements Tab */}
+            {activePortfolioTab === "achievements" && (
+              <div className="space-y-6">
+                {ACHIEVEMENTS.map((ach, idx) => (
+                  <div
+                    key={idx}
+                    className="border-2 border-black bg-[#0b0b1a] p-4 shadow-[4px_4px_0_0_#000] flex flex-col md:flex-row gap-4 items-start"
+                  >
+                    <div className="w-12 h-12 bg-[#ffff00] text-black font-pixel-heading text-xl flex items-center justify-center shrink-0 border-2 border-black shadow-[2px_2px_0_0_#000]">
+                      🏆
+                    </div>
+                    <div>
+                      <h4 className="font-pixel-heading text-xs text-[#39ff14] mb-2">
+                        {ach.title}
+                      </h4>
+                      <p className="font-mono text-sm text-[#f0f0f8]/85">
+                        {ach.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Certificates Tab */}
+            {activePortfolioTab === "certificates" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {CERTIFICATES.map((cert, idx) => (
+                  <div
+                    key={idx}
+                    className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000]"
+                  >
+                    <div>
+                      <h4 className="font-pixel-heading text-xs text-[#00e5ff] mb-2">
+                        {cert.title}
+                      </h4>
+                      <p className="font-mono text-xs text-[#a0a0c0] mb-1">
+                        Provider: {cert.provider}
+                      </p>
+                      <p className="font-mono text-xs text-[#ffff00] mb-4">
+                        Issued: {cert.year}
+                      </p>
+                    </div>
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pixel-btn text-[9px] text-center w-full py-1.5"
+                    >
+                      VIEW CERTIFICATE
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
+
+      {/* Footer / Arcade Cabinet bottom */}
+      <footer className="w-full max-w-6xl mt-12 border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-sm">
+        <div className="text-center md:text-left">
+          <p className="font-pixel-heading text-xs text-[#39ff14] mb-2 neon-glow">
+            INSERT COIN TO CONNECT
+          </p>
+          <p className="text-[#a0a0c0] text-xs">
+            © {new Date().getFullYear()} {BIO.name}. All rights reserved.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* Arcade Cabinet Interaction */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setCoinCount((prev) => prev + 1)}
+            className="pixel-btn pixel-btn-secondary"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            INSERT COIN ({coinCount})
+          </button>
+          <div className="text-right">
+            <p className="text-[#00e5ff] font-bold text-xs uppercase font-pixel-heading">
+              {coinCount > 0 ? `CREDITS: ${coinCount}` : "INSERT COIN"}
+            </p>
+            <p className="text-xs text-[#ffff00]">
+              {coinCount > 0 ? "GAME START READY!" : "FREE PLAY ENCOURAGED"}
+            </p>
+          </div>
         </div>
-      </main>
+      </footer>
     </div>
   );
 }

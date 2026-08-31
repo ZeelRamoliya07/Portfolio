@@ -1,26 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Share+Tech+Mono&display=swap');
 @import "tailwindcss";
 
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #0f0f23;
+  --foreground: #f0f0f8;
+  --primary: #39ff14; /* Neon Green */
+  --secondary: #00e5ff; /* Cyan */
+  --accent: #ffff00; /* Neon Yellow */
+  --border: #000000;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'VT323', 'Share Tech Mono', monospace;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle, rgba(25, 25, 60, 0.5) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Pixel Art Typography */
+.font-pixel-heading {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.5;
+}
+
+.font-pixel-body {
+  font-family: 'VT323', monospace;
+}
+
+/* Custom Pixel Art Scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #171730;
+  border-left: 4px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #39ff14;
+  border: 4px solid var(--border);
+  box-shadow: inset -2px -2px 0px 0px #00a300;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00e5ff;
+  box-shadow: inset -2px -2px 0px 0px #008fa3;
+}
+
+/* CRT Screen Scanlines effect */
+.crt::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 99999;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+.crt-curve {
+  animation: textShadow 1.6s infinite;
+}
+
+/* Hard pixel shadows and scaling hover effects */
+.pixel-btn {
+  position: relative;
+  display: inline-block;
+  border: 4px solid #000;
+  background: #39ff14;
+  color: #000;
+  padding: 8px 16px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75rem;
+  text-decoration: none;
+  box-shadow: 4px 4px 0px 0px #000;
+  transition: all 0.1s ease;
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
+.pixel-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #000;
+  background: #00e5ff;
+}
+
+.pixel-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px 0px #000;
+}
+
+.pixel-btn-secondary {
+  background: #ff007f;
+  color: #fff;
+}
+
+.pixel-btn-secondary:hover {
+  background: #ffff00;
+  color: #000;
+}
+
+.pixel-card {
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0px 0px #000;
+  background: #171730;
+  image-rendering: pixelated;
+}
+
+.pixel-card-accent {
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0px 0px #39ff14;
+  background: #171730;
+}
+
+/* Custom level progress bar */
+.pixel-progress-bar {
+  border: 4px solid #000;
+  height: 24px;
+  background: #23234a;
+  position: relative;
+  image-rendering: pixelated;
+}
+
+.pixel-progress-fill {
+  background: repeating-linear-gradient(
+    45deg,
+    #39ff14,
+    #39ff14 10px,
+    #2ebd10 10px,
+    #2ebd10 20px
+  );
+  height: 100%;
+  box-shadow: inset -4px 0px 0px 0px #00a300;
+}
+
+/* Text flashing cursor effect */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.pixel-blink {
+  animation: blink 1s infinite;
+}
+
+/* Subtle glow for retro display headers */
+.neon-glow {
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+}
+
+.cyan-glow {
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
 }
