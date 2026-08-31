@@ -5,6 +5,7 @@ import { SKILLS } from "../constants/data";
 
 export default function SkillGrid() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const categories = ["All", ...Array.from(new Set(SKILLS.map((s) => s.category)))];
 
@@ -13,6 +14,13 @@ export default function SkillGrid() {
       ? SKILLS
       : SKILLS.filter((s) => s.category === selectedCategory);
 
+  const handleCategoryChange = (cat: string) => {
+    setSelectedCategory(cat);
+    setShowAll(false);
+  };
+
+  const displayedSkills = showAll ? filteredSkills : filteredSkills.slice(0, 5);
+
   return (
     <div className="space-y-6">
       {/* Category Tabs */}
@@ -20,7 +28,7 @@ export default function SkillGrid() {
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => setSelectedCategory(cat)}
+            onClick={() => handleCategoryChange(cat)}
             className={`px-3 py-1 text-xs font-pixel-heading border-2 border-black shadow-[2px_2px_0px_0px_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[0px_0px_0px_0px_#000] transition-all cursor-pointer ${
               selectedCategory === cat
                 ? "bg-[#39ff14] text-black"
@@ -34,7 +42,7 @@ export default function SkillGrid() {
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredSkills.map((skill) => {
+        {displayedSkills.map((skill) => {
           // Level mapping based on score
           let levelName = "NOOB";
           if (skill.score >= 90) levelName = "EXPERT";
@@ -66,6 +74,17 @@ export default function SkillGrid() {
           );
         })}
       </div>
+
+      {filteredSkills.length > 5 && (
+        <div className="flex justify-center pt-4">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="pixel-btn"
+          >
+            {showAll ? "SHOW LESS SKILLS" : "SHOW MORE SKILLS"}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

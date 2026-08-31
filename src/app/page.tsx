@@ -21,6 +21,10 @@ export default function Home() {
   const [activePortfolioTab, setActivePortfolioTab] = useState<PortfolioTab>("projects");
   const [activeAboutTab, setActiveAboutTab] = useState<AboutTab>("Education");
   const [coinCount, setCoinCount] = useState<number>(0);
+  const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
+  const [showAllAchievements, setShowAllAchievements] = useState<boolean>(false);
+  const [showAllCertificates, setShowAllCertificates] = useState<boolean>(false);
+
 
   return (
     <div className="min-h-screen bg-[#0f0f23] text-[#f0f0f8] p-4 md:p-8 flex flex-col items-center">
@@ -274,75 +278,87 @@ export default function Home() {
 
             {/* Projects Tab */}
             {activePortfolioTab === "projects" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {PROJECTS.map((proj) => (
-                  <div
-                    key={proj.title}
-                    className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000] hover:shadow-[4px_4px_0_0_#39ff14] transition-all"
-                  >
-                    <div>
-                      <div className="flex justify-between items-start gap-2 mb-2 pb-2 border-b border-[#23234a]">
-                        <h4 className="font-pixel-heading text-xs text-[#00e5ff] tracking-wide">
-                          {proj.title}
-                        </h4>
-                        <span className="text-[9px] font-mono text-[#a0a0c0] text-right shrink-0">
-                          {proj.role}
-                        </span>
-                      </div>
-                      <p className="font-mono text-sm text-[#f0f0f8]/90 mb-4">
-                        {proj.desc}
-                      </p>
-                      <ul className="list-disc pl-4 font-mono text-xs text-[#a0a0c0] mb-4 space-y-1">
-                        {proj.bullets.map((b, idx) => (
-                          <li key={idx}>{b}</li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="space-y-4">
-                      {/* Tech stack badges */}
-                      <div className="flex flex-wrap gap-1.5">
-                        {proj.tech.map((t) => (
-                          <span
-                            key={t}
-                            className="px-1.5 py-0.5 text-[8px] font-pixel-heading bg-[#23234a] text-[#ffff00] border border-black"
-                          >
-                            {t}
+              <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {(showAllProjects ? PROJECTS : PROJECTS.slice(0, 5)).map((proj) => (
+                    <div
+                      key={proj.title}
+                      className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000] hover:shadow-[4px_4px_0_0_#39ff14] transition-all"
+                    >
+                      <div>
+                        <div className="flex justify-between items-start gap-2 mb-2 pb-2 border-b border-[#23234a]">
+                          <h4 className="font-pixel-heading text-xs text-[#00e5ff] tracking-wide">
+                            {proj.title}
+                          </h4>
+                          <span className="text-[9px] font-mono text-[#a0a0c0] text-right shrink-0">
+                            {proj.role}
                           </span>
-                        ))}
+                        </div>
+                        <p className="font-mono text-sm text-[#f0f0f8]/90 mb-4">
+                          {proj.desc}
+                        </p>
+                        <ul className="list-disc pl-4 font-mono text-xs text-[#a0a0c0] mb-4 space-y-1">
+                          {proj.bullets.map((b, idx) => (
+                            <li key={idx}>{b}</li>
+                          ))}
+                        </ul>
                       </div>
 
-                      {/* Action Links */}
-                      <div className="flex gap-2">
-                        {proj.live && (
+                      <div className="space-y-4">
+                        {/* Tech stack badges */}
+                        <div className="flex flex-wrap gap-1.5">
+                          {proj.tech.map((t) => (
+                            <span
+                              key={t}
+                              className="px-1.5 py-0.5 text-[8px] font-pixel-heading bg-[#23234a] text-[#ffff00] border border-black"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Action Links */}
+                        <div className="flex gap-2">
+                          {proj.live && (
+                            <a
+                              href={proj.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="pixel-btn text-[9px] py-1 px-2.5 bg-[#39ff14]"
+                            >
+                              DEMO
+                            </a>
+                          )}
                           <a
-                            href={proj.live}
+                            href={proj.repo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="pixel-btn text-[9px] py-1 px-2.5 bg-[#39ff14]"
+                            className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5 bg-[#ff007f]"
                           >
-                            DEMO
+                            GITHUB
                           </a>
-                        )}
-                        <a
-                          href={proj.repo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5 bg-[#ff007f]"
-                        >
-                          GITHUB
-                        </a>
+                        </div>
                       </div>
                     </div>
+                  ))}
+                </div>
+                {PROJECTS.length > 5 && (
+                  <div className="flex justify-center mt-6">
+                    <button
+                      onClick={() => setShowAllProjects(!showAllProjects)}
+                      className="pixel-btn"
+                    >
+                      {showAllProjects ? "SHOW LESS PROJECTS" : "SHOW MORE PROJECTS"}
+                    </button>
                   </div>
-                ))}
+                )}
               </div>
             )}
 
             {/* Achievements Tab */}
             {activePortfolioTab === "achievements" && (
               <div className="space-y-6">
-                {ACHIEVEMENTS.map((ach, idx) => (
+                {(showAllAchievements ? ACHIEVEMENTS : ACHIEVEMENTS.slice(0, 5)).map((ach, idx) => (
                   <div
                     key={idx}
                     className="border-2 border-black bg-[#0b0b1a] p-4 shadow-[4px_4px_0_0_#000] flex flex-col md:flex-row gap-4 items-start"
@@ -360,38 +376,60 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
+                {ACHIEVEMENTS.length > 5 && (
+                  <div className="flex justify-center mt-6">
+                    <button
+                      onClick={() => setShowAllAchievements(!showAllAchievements)}
+                      className="pixel-btn"
+                    >
+                      {showAllAchievements ? "SHOW LESS ACHIEVEMENTS" : "SHOW MORE ACHIEVEMENTS"}
+                    </button>
+                  </div>
+                )}
               </div>
             )}
 
             {/* Certificates Tab */}
             {activePortfolioTab === "certificates" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {CERTIFICATES.map((cert, idx) => (
-                  <div
-                    key={idx}
-                    className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000]"
-                  >
-                    <div>
-                      <h4 className="font-pixel-heading text-xs text-[#00e5ff] mb-2">
-                        {cert.title}
-                      </h4>
-                      <p className="font-mono text-xs text-[#a0a0c0] mb-1">
-                        Provider: {cert.provider}
-                      </p>
-                      <p className="font-mono text-xs text-[#ffff00] mb-4">
-                        Issued: {cert.year}
-                      </p>
-                    </div>
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pixel-btn text-[9px] text-center w-full py-1.5"
+              <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {(showAllCertificates ? CERTIFICATES : CERTIFICATES.slice(0, 5)).map((cert, idx) => (
+                    <div
+                      key={idx}
+                      className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000]"
                     >
-                      VIEW CERTIFICATE
-                    </a>
+                      <div>
+                        <h4 className="font-pixel-heading text-xs text-[#00e5ff] mb-2">
+                          {cert.title}
+                        </h4>
+                        <p className="font-mono text-xs text-[#a0a0c0] mb-1">
+                          Provider: {cert.provider}
+                        </p>
+                        <p className="font-mono text-xs text-[#ffff00] mb-4">
+                          Issued: {cert.year}
+                        </p>
+                      </div>
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pixel-btn text-[9px] text-center w-full py-1.5"
+                      >
+                        VIEW CERTIFICATE
+                      </a>
+                    </div>
+                  ))}
+                </div>
+                {CERTIFICATES.length > 5 && (
+                  <div className="flex justify-center mt-6">
+                    <button
+                      onClick={() => setShowAllCertificates(!showAllCertificates)}
+                      className="pixel-btn"
+                    >
+                      {showAllCertificates ? "SHOW LESS CERTIFICATES" : "SHOW MORE CERTIFICATES"}
+                    </button>
                   </div>
-                ))}
+                )}
               </div>
             )}
           </div>
