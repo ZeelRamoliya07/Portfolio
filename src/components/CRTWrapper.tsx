@@ -27,10 +27,11 @@ export default function CRTWrapper({ children }: CRTWrapperProps) {
       <div className="fixed bottom-4 right-4 z-50 pointer-events-auto">
         <button
           onClick={() => setCrtActive(!crtActive)}
-          className={`pixel-btn ${crtActive ? "pixel-btn-secondary" : ""}`}
+          className={`pixel-btn flex items-center justify-center ${crtActive ? "pixel-btn-secondary" : ""}`}
           title="Toggle CRT Screen Scanlines"
         >
-          CRT SCREEN: {crtActive ? "ON" : "OFF"}
+          <span className="md:hidden text-lg">📺</span>
+          <span className="hidden md:inline">CRT SCREEN: {crtActive ? "ON" : "OFF"}</span>
         </button>
       </div>
       {children}
