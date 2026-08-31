@@ -10,7 +10,6 @@ import PixelCard from "../components/PixelCard";
 import SkillGrid from "../components/SkillGrid";
 
 export default function Home() {
-  const [coinCount, setCoinCount] = useState<number>(0);
   const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
 
   return (
@@ -302,28 +301,32 @@ export default function Home() {
       <footer className="w-full max-w-6xl mt-12 border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-sm">
         <div className="text-center md:text-left">
           <p className="font-pixel-heading text-xs text-[#39ff14] mb-2 neon-glow">
-            INSERT COIN TO CONNECT
+            CONTACT DETAILS
           </p>
           <p className="text-[#a0a0c0] text-xs">
             © {new Date().getFullYear()} {BIO.name}. All rights reserved.
           </p>
         </div>
 
-        {/* Arcade Cabinet Interaction */}
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => setCoinCount((prev) => prev + 1)}
-            className="pixel-btn pixel-btn-secondary"
-          >
-            INSERT COIN ({coinCount})
-          </button>
-          <div className="text-right">
-            <p className="text-[#00e5ff] font-bold text-xs uppercase font-pixel-heading">
-              {coinCount > 0 ? `CREDITS: ${coinCount}` : "INSERT COIN"}
-            </p>
-            <p className="text-xs text-[#ffff00]">
-              {coinCount > 0 ? "GAME START READY!" : "FREE PLAY ENCOURAGED"}
-            </p>
+        {/* Contact Links */}
+        <div className="flex flex-col md:flex-row gap-6 items-center font-mono text-xs md:text-sm">
+          <div>
+            <span className="text-[#00e5ff] font-bold">Email:</span>{" "}
+            <a href={`mailto:${BIO.contact.email}`} className="underline text-[#39ff14] hover:text-white">
+              {BIO.contact.email}
+            </a>
+          </div>
+          <div>
+            <span className="text-[#00e5ff] font-bold">Phone:</span>{" "}
+            <span className="text-[#ffff00]">{BIO.contact.phone}</span>
+          </div>
+          <div className="flex gap-3">
+            <a href={BIO.contact.github} target="_blank" rel="noopener noreferrer" className="pixel-btn text-[9px] py-1 px-2.5">
+              GITHUB
+            </a>
+            <a href={BIO.contact.linkedin} target="_blank" rel="noopener noreferrer" className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5">
+              LINKEDIN
+            </a>
           </div>
         </div>
       </footer>
