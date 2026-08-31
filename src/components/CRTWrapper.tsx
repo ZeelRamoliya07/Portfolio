@@ -30,7 +30,20 @@ export default function CRTWrapper({ children }: CRTWrapperProps) {
           className={`pixel-btn flex items-center justify-center ${crtActive ? "pixel-btn-secondary" : ""}`}
           title="Toggle CRT Screen Scanlines"
         >
-          <span className="md:hidden text-lg">📺</span>
+          <span className="md:hidden">
+            <svg
+              className="w-6 h-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />
+              <polyline points="17 2 12 7 7 2" />
+            </svg>
+          </span>
           <span className="hidden md:inline">CRT SCREEN: {crtActive ? "ON" : "OFF"}</span>
         </button>
       </div>
