@@ -3,28 +3,15 @@
 import React, { useState } from "react";
 import {
   BIO,
-  PORTFOLIO_TABS,
-  ABOUT_TABS,
   EDUCATION,
-  EXPERIENCE,
   PROJECTS,
-  ACHIEVEMENTS,
-  CERTIFICATES,
-  PortfolioTab,
-  AboutTab,
 } from "../constants/data";
 import PixelCard from "../components/PixelCard";
-import RetroTabs from "../components/RetroTabs";
 import SkillGrid from "../components/SkillGrid";
 
 export default function Home() {
-  const [activePortfolioTab, setActivePortfolioTab] = useState<PortfolioTab>("projects");
-  const [activeAboutTab, setActiveAboutTab] = useState<AboutTab>("Education");
   const [coinCount, setCoinCount] = useState<number>(0);
   const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
-  const [showAllAchievements, setShowAllAchievements] = useState<boolean>(false);
-  const [showAllCertificates, setShowAllCertificates] = useState<boolean>(false);
-
 
   return (
     <div className="min-h-screen bg-[#0f0f23] text-[#f0f0f8] p-4 md:p-8 flex flex-col items-center">
@@ -39,7 +26,7 @@ export default function Home() {
               {BIO.name.toUpperCase()}
             </h1>
             <p className="text-sm font-mono text-[#00e5ff] uppercase tracking-wider">
-              {BIO.title} | LVL 2
+              {BIO.title} | LVL 1
             </p>
           </div>
         </div>
@@ -49,23 +36,23 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <span className="w-8 text-[#ff007f] font-bold">HP:</span>
             <div className="pixel-progress-bar w-40 md:w-48 bg-[#23234a]">
-              <div className="h-full bg-[#ff007f] shadow-[inset_-4px_0_0_#99004d]" style={{ width: "90%" }} />
+              <div className="h-full bg-[#ff007f] shadow-[inset_-4px_0_0_#99004d]" style={{ width: "100%" }} />
             </div>
-            <span>90/100</span>
+            <span>100/100</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-8 text-[#00e5ff] font-bold">MP:</span>
             <div className="pixel-progress-bar w-40 md:w-48 bg-[#23234a]">
-              <div className="h-full bg-[#00e5ff] shadow-[inset_-4px_0_0_#008fa3]" style={{ width: "85%" }} />
+              <div className="h-full bg-[#00e5ff] shadow-[inset_-4px_0_0_#008fa3]" style={{ width: "100%" }} />
             </div>
-            <span>85/100</span>
+            <span>100/100</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-8 text-[#ffff00] font-bold">XP:</span>
             <div className="pixel-progress-bar w-40 md:w-48 bg-[#23234a]">
-              <div className="h-full bg-[#ffff00] shadow-[inset_-4px_0_0_#b3b300]" style={{ width: "78%" }} />
+              <div className="h-full bg-[#ffff00] shadow-[inset_-4px_0_0_#b3b300]" style={{ width: "20%" }} />
             </div>
-            <span>7860/10000</span>
+            <span>2028/10000</span>
           </div>
         </div>
       </header>
@@ -78,14 +65,13 @@ export default function Home() {
           {/* Avatar & RPG Stats Card */}
           <PixelCard title="Character Profile" variant="accent">
             <div className="flex flex-col items-center pb-4 border-b-2 border-dashed border-[#39ff14] mb-4">
-              {/* Pixelated Avatar Art Placeholder */}
               <div className="w-32 h-32 border-4 border-black bg-[#23234a] flex items-center justify-center p-2 mb-4 relative">
                 <div className="absolute inset-0 bg-[#0f0f23] opacity-20 bg-[radial-gradient(#39ff14_1px,transparent_1px)] [background-size:8px_8px]" />
                 <svg className="w-24 h-24 text-[#39ff14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                 </svg>
               </div>
-              <p className="font-pixel-heading text-[10px] text-[#ffff00] text-center">
+              <p className="font-pixel-heading text-[10px] text-[#ffff00] text-center uppercase">
                 GUILD: SVNIT SURAT
               </p>
             </div>
@@ -94,19 +80,19 @@ export default function Home() {
             <div className="space-y-3 font-mono text-base">
               <div className="flex justify-between">
                 <span className="text-[#a0a0c0]">STR (Algorithms):</span>
-                <span className="text-[#39ff14] font-bold">18 / 20</span>
+                <span className="text-[#39ff14] font-bold">15 / 20</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#a0a0c0]">AGI (Python/Code):</span>
-                <span className="text-[#39ff14] font-bold">19 / 20</span>
+                <span className="text-[#a0a0c0]">AGI (Python/C++):</span>
+                <span className="text-[#39ff14] font-bold">16 / 20</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#a0a0c0]">INT (Machine Learning):</span>
-                <span className="text-[#39ff14] font-bold">17 / 20</span>
+                <span className="text-[#39ff14] font-bold">14 / 20</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#a0a0c0]">STA (Django/Web):</span>
-                <span className="text-[#39ff14] font-bold">16 / 20</span>
+                <span className="text-[#a0a0c0]">STA (HTML/CSS/JS):</span>
+                <span className="text-[#39ff14] font-bold">15 / 20</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#a0a0c0]">LUK (JEE Rank):</span>
@@ -155,109 +141,68 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Right Column: Dynamic Tabs & Main Resume Data (8 cols) */}
+        {/* Right Column: Main Resume Data (8 cols) */}
         <section className="lg:col-span-8 space-y-8">
           
-          {/* Experience vs Education tab selection */}
+          {/* Education Section */}
           <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <RetroTabs
-              tabs={ABOUT_TABS}
-              activeTab={activeAboutTab}
-              onChange={setActiveAboutTab}
-            />
+            <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-6 uppercase tracking-wider">
+              Education History
+            </h3>
+            <div className="space-y-6">
+              {EDUCATION.map((edu) => (
+                <div key={edu.degree} className="border-l-4 border-[#39ff14] pl-4 py-2 space-y-2">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-1">
+                    <h4 className="font-pixel-heading text-xs md:text-sm text-[#00e5ff]">
+                      {edu.degree}
+                    </h4>
+                    <span className="text-xs text-[#ffff00] font-mono shrink-0">
+                      {edu.period.start} - {edu.period.end}
+                    </span>
+                  </div>
+                  <p className="font-mono text-sm text-[#a0a0c0]">
+                    {edu.institute}
+                  </p>
+                  <p className="text-base text-[#39ff14] font-bold">
+                    Grade: {edu.grade}
+                  </p>
+                  <ul className="list-disc pl-5 font-mono text-sm space-y-1 text-[#f0f0f8]/80">
+                    {edu.details.map((detail, idx) => (
+                      <li key={idx}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
 
-            {activeAboutTab === "Education" && (
-              <div className="space-y-6">
-                {EDUCATION.map((edu) => (
-                  <div key={edu.degree} className="border-l-4 border-[#39ff14] pl-4 py-2 space-y-2">
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-1">
-                      <h4 className="font-pixel-heading text-xs md:text-sm text-[#00e5ff]">
-                        {edu.degree}
-                      </h4>
-                      <span className="text-xs text-[#ffff00] font-mono shrink-0">
-                        {edu.period.start} - {edu.period.end}
-                      </span>
-                    </div>
-                    <p className="font-mono text-sm text-[#a0a0c0]">
-                      {edu.institute}
-                    </p>
-                    <p className="text-base text-[#39ff14] font-bold">
-                      Grade: {edu.grade}
-                    </p>
-                    <ul className="list-disc pl-5 font-mono text-sm space-y-1 text-[#f0f0f8]/80">
-                      {edu.details.map((detail, idx) => (
-                        <li key={idx}>{detail}</li>
+              {/* Key Courses Subsection */}
+              <div className="mt-6 pt-6 border-t-2 border-dashed border-[#23234a]">
+                <h5 className="font-pixel-heading text-xs text-[#ffff00] mb-4">
+                  ACADEMIC QUEST LOG (KEY COURSES)
+                </h5>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-sm">
+                  <div className="border-2 border-black bg-[#0b0b1a] p-3 shadow-[2px_2px_0_0_#000]">
+                    <span className="text-[#39ff14] font-bold uppercase block mb-2 border-b border-[#23234a] pb-1">
+                      Core CS
+                    </span>
+                    <ul className="list-disc pl-4 space-y-1 text-[#f0f0f8]/85">
+                      {BIO.keyCourses.coreCS.map((course) => (
+                        <li key={course}>{course}</li>
                       ))}
                     </ul>
                   </div>
-                ))}
-
-                {/* Key Courses Subsection */}
-                <div className="mt-6 pt-6 border-t-2 border-dashed border-[#23234a]">
-                  <h5 className="font-pixel-heading text-xs text-[#ffff00] mb-4">
-                    ACADEMIC QUEST LOG (KEY COURSES)
-                  </h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-sm">
-                    <div className="border-2 border-black bg-[#0b0b1a] p-3 shadow-[2px_2px_0_0_#000]">
-                      <span className="text-[#39ff14] font-bold uppercase block mb-2 border-b border-[#23234a] pb-1">
-                        Core CS
-                      </span>
-                      <ul className="list-disc pl-4 space-y-1 text-[#f0f0f8]/85">
-                        {BIO.keyCourses.coreCS.map((course) => (
-                          <li key={course}>{course}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="border-2 border-black bg-[#0b0b1a] p-3 shadow-[2px_2px_0_0_#000]">
-                      <span className="text-[#00e5ff] font-bold uppercase block mb-2 border-b border-[#23234a] pb-1">
-                        AI & ML
-                      </span>
-                      <ul className="list-disc pl-4 space-y-1 text-[#f0f0f8]/85">
-                        {BIO.keyCourses.aiML.map((course) => (
-                          <li key={course}>{course}</li>
-                        ))}
-                      </ul>
-                    </div>
+                  <div className="border-2 border-black bg-[#0b0b1a] p-3 shadow-[2px_2px_0_0_#000]">
+                    <span className="text-[#00e5ff] font-bold uppercase block mb-2 border-b border-[#23234a] pb-1">
+                      AI & ML
+                    </span>
+                    <ul className="list-disc pl-4 space-y-1 text-[#f0f0f8]/85">
+                      {BIO.keyCourses.aiML.map((course) => (
+                        <li key={course}>{course}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
-            )}
-
-            {activeAboutTab === "Experience" && (
-              <div className="space-y-6">
-                {EXPERIENCE.map((exp) => (
-                  <div key={exp.title} className="border-l-4 border-[#ff007f] pl-4 py-2 space-y-3">
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-1">
-                      <h4 className="font-pixel-heading text-xs md:text-sm text-[#00e5ff]">
-                        {exp.title}
-                      </h4>
-                      <span className="text-xs text-[#ffff00] font-mono shrink-0">
-                        {exp.period.start} - {exp.period.end}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center text-sm font-mono text-[#a0a0c0]">
-                      <span>{exp.company} ({exp.type})</span>
-                      <span>{exp.location}</span>
-                    </div>
-                    <ul className="list-disc pl-5 font-mono text-sm space-y-1.5 text-[#f0f0f8]/80">
-                      {exp.bullets.map((bullet, idx) => (
-                        <li key={idx}>{bullet}</li>
-                      ))}
-                    </ul>
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {exp.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="px-2 py-0.5 text-[10px] font-pixel-heading bg-[#23234a] text-[#39ff14] border border-black shadow-[1px_1px_0_0_#000]"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+            </div>
           </div>
 
           {/* Skills Grid */}
@@ -268,170 +213,87 @@ export default function Home() {
             <SkillGrid />
           </div>
 
-          {/* Projects / Achievements / Certificates Tabbed Showcase */}
+          {/* Projects Showcase */}
           <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <RetroTabs
-              tabs={PORTFOLIO_TABS}
-              activeTab={activePortfolioTab}
-              onChange={setActivePortfolioTab}
-            />
+            <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-6 uppercase tracking-wider">
+              Featured Projects
+            </h3>
 
-            {/* Projects Tab */}
-            {activePortfolioTab === "projects" && (
-              <div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {(showAllProjects ? PROJECTS : PROJECTS.slice(0, 5)).map((proj) => (
-                    <div
-                      key={proj.title}
-                      className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000] hover:shadow-[4px_4px_0_0_#39ff14] transition-all"
-                    >
-                      <div>
-                        <div className="flex justify-between items-start gap-2 mb-2 pb-2 border-b border-[#23234a]">
-                          <h4 className="font-pixel-heading text-xs text-[#00e5ff] tracking-wide">
-                            {proj.title}
-                          </h4>
-                          <span className="text-[9px] font-mono text-[#a0a0c0] text-right shrink-0">
-                            {proj.role}
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {(showAllProjects ? PROJECTS : PROJECTS.slice(0, 5)).map((proj) => (
+                  <div
+                    key={proj.title}
+                    className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000] hover:shadow-[4px_4px_0_0_#39ff14] transition-all"
+                  >
+                    <div>
+                      <div className="flex justify-between items-start gap-2 mb-2 pb-2 border-b border-[#23234a]">
+                        <h4 className="font-pixel-heading text-xs text-[#00e5ff] tracking-wide">
+                          {proj.title}
+                        </h4>
+                        <span className="text-[9px] font-mono text-[#a0a0c0] text-right shrink-0">
+                          {proj.role}
+                        </span>
+                      </div>
+                      <p className="font-mono text-sm text-[#f0f0f8]/90 mb-4">
+                        {proj.desc}
+                      </p>
+                      <ul className="list-disc pl-4 font-mono text-xs text-[#a0a0c0] mb-4 space-y-1">
+                        {proj.bullets.map((b, idx) => (
+                          <li key={idx}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="space-y-4">
+                      {/* Tech stack badges */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {proj.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="px-1.5 py-0.5 text-[8px] font-pixel-heading bg-[#23234a] text-[#ffff00] border border-black"
+                          >
+                            {t}
                           </span>
-                        </div>
-                        <p className="font-mono text-sm text-[#f0f0f8]/90 mb-4">
-                          {proj.desc}
-                        </p>
-                        <ul className="list-disc pl-4 font-mono text-xs text-[#a0a0c0] mb-4 space-y-1">
-                          {proj.bullets.map((b, idx) => (
-                            <li key={idx}>{b}</li>
-                          ))}
-                        </ul>
+                        ))}
                       </div>
 
-                      <div className="space-y-4">
-                        {/* Tech stack badges */}
-                        <div className="flex flex-wrap gap-1.5">
-                          {proj.tech.map((t) => (
-                            <span
-                              key={t}
-                              className="px-1.5 py-0.5 text-[8px] font-pixel-heading bg-[#23234a] text-[#ffff00] border border-black"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Action Links */}
-                        <div className="flex gap-2">
-                          {proj.live && (
-                            <a
-                              href={proj.live}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="pixel-btn text-[9px] py-1 px-2.5 bg-[#39ff14]"
-                            >
-                              DEMO
-                            </a>
-                          )}
+                      {/* Action Links */}
+                      <div className="flex gap-2">
+                        {proj.live && (
                           <a
-                            href={proj.repo}
+                            href={proj.live}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5 bg-[#ff007f]"
+                            className="pixel-btn text-[9px] py-1 px-2.5 bg-[#39ff14]"
                           >
-                            GITHUB
+                            DEMO
                           </a>
-                        </div>
+                        )}
+                        <a
+                          href={proj.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5 bg-[#ff007f]"
+                        >
+                          GITHUB
+                        </a>
                       </div>
-                    </div>
-                  ))}
-                </div>
-                {PROJECTS.length > 5 && (
-                  <div className="flex justify-center mt-6">
-                    <button
-                      onClick={() => setShowAllProjects(!showAllProjects)}
-                      className="pixel-btn"
-                    >
-                      {showAllProjects ? "SHOW LESS PROJECTS" : "SHOW MORE PROJECTS"}
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Achievements Tab */}
-            {activePortfolioTab === "achievements" && (
-              <div className="space-y-6">
-                {(showAllAchievements ? ACHIEVEMENTS : ACHIEVEMENTS.slice(0, 5)).map((ach, idx) => (
-                  <div
-                    key={idx}
-                    className="border-2 border-black bg-[#0b0b1a] p-4 shadow-[4px_4px_0_0_#000] flex flex-col md:flex-row gap-4 items-start"
-                  >
-                    <div className="w-12 h-12 bg-[#ffff00] text-black font-pixel-heading text-xl flex items-center justify-center shrink-0 border-2 border-black shadow-[2px_2px_0_0_#000]">
-                      🏆
-                    </div>
-                    <div>
-                      <h4 className="font-pixel-heading text-xs text-[#39ff14] mb-2">
-                        {ach.title}
-                      </h4>
-                      <p className="font-mono text-sm text-[#f0f0f8]/85">
-                        {ach.desc}
-                      </p>
                     </div>
                   </div>
                 ))}
-                {ACHIEVEMENTS.length > 5 && (
-                  <div className="flex justify-center mt-6">
-                    <button
-                      onClick={() => setShowAllAchievements(!showAllAchievements)}
-                      className="pixel-btn"
-                    >
-                      {showAllAchievements ? "SHOW LESS ACHIEVEMENTS" : "SHOW MORE ACHIEVEMENTS"}
-                    </button>
-                  </div>
-                )}
               </div>
-            )}
-
-            {/* Certificates Tab */}
-            {activePortfolioTab === "certificates" && (
-              <div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {(showAllCertificates ? CERTIFICATES : CERTIFICATES.slice(0, 5)).map((cert, idx) => (
-                    <div
-                      key={idx}
-                      className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000]"
-                    >
-                      <div>
-                        <h4 className="font-pixel-heading text-xs text-[#00e5ff] mb-2">
-                          {cert.title}
-                        </h4>
-                        <p className="font-mono text-xs text-[#a0a0c0] mb-1">
-                          Provider: {cert.provider}
-                        </p>
-                        <p className="font-mono text-xs text-[#ffff00] mb-4">
-                          Issued: {cert.year}
-                        </p>
-                      </div>
-                      <a
-                        href={cert.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="pixel-btn text-[9px] text-center w-full py-1.5"
-                      >
-                        VIEW CERTIFICATE
-                      </a>
-                    </div>
-                  ))}
+              {PROJECTS.length > 5 && (
+                <div className="flex justify-center mt-6">
+                  <button
+                    onClick={() => setShowAllProjects(!showAllProjects)}
+                    className="pixel-btn"
+                  >
+                    {showAllProjects ? "SHOW LESS PROJECTS" : "SHOW MORE PROJECTS"}
+                  </button>
                 </div>
-                {CERTIFICATES.length > 5 && (
-                  <div className="flex justify-center mt-6">
-                    <button
-                      onClick={() => setShowAllCertificates(!showAllCertificates)}
-                      className="pixel-btn"
-                    >
-                      {showAllCertificates ? "SHOW LESS CERTIFICATES" : "SHOW MORE CERTIFICATES"}
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </section>
       </main>
