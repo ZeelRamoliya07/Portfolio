@@ -9,6 +9,30 @@ import {
 import PixelCard from "../components/PixelCard";
 import SkillGrid from "../components/SkillGrid";
 
+function ProfileAvatar({ src, alt }: { src?: string; alt: string }) {
+  const [hasError, setHasError] = useState(false);
+
+  if (src && !hasError) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        onError={() => setHasError(true)}
+        className="w-full h-full object-cover border-2 border-black"
+      />
+    );
+  }
+
+  return (
+    <>
+      <div className="absolute inset-0 bg-[#0f0f23] opacity-20 bg-[radial-gradient(#39ff14_1px,transparent_1px)] [background-size:8px_8px]" />
+      <svg className="w-24 h-24 text-[#39ff14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+      </svg>
+    </>
+  );
+}
+
 export default function Home() {
   const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
 
@@ -65,20 +89,7 @@ export default function Home() {
           <PixelCard title="Character Profile" variant="accent">
             <div className="flex flex-col items-center pb-4 border-b-2 border-dashed border-[#39ff14] mb-4">
               <div className="w-32 h-32 border-4 border-black bg-[#23234a] flex items-center justify-center p-1 mb-4 relative overflow-hidden shadow-[3px_3px_0px_0px_#000]">
-                {BIO.avatar ? (
-                  <img
-                    src={BIO.avatar}
-                    alt={BIO.name}
-                    className="w-full h-full object-cover border-2 border-black"
-                  />
-                ) : (
-                  <>
-                    <div className="absolute inset-0 bg-[#0f0f23] opacity-20 bg-[radial-gradient(#39ff14_1px,transparent_1px)] [background-size:8px_8px]" />
-                    <svg className="w-24 h-24 text-[#39ff14]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                    </svg>
-                  </>
-                )}
+                <ProfileAvatar src={BIO.avatar} alt={BIO.name} />
               </div>
               <p className="font-pixel-heading text-[10px] text-[#ffff00] text-center uppercase">
                 GUILD: SVNIT SURAT
