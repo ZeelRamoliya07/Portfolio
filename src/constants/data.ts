@@ -6,7 +6,7 @@ export const BIO = {
     email: "zeelspeaks@gmail.com",
     phone: "+91-8980377968",
     github: "https://github.com/ZeelRamoliya07",
-    linkedin: "https://www.linkedin.com/in/zeel-ramoliya-3029462b9?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    linkedin: "https://www.linkedin.com/in/zeel-ramoliya",
   },
   profile: "B.Tech Artificial Intelligence student at SVNIT Surat with a strong interest in artificial intelligence, emerging technologies, and technical problem-solving. I enjoy exploring how AI systems work and communicating complex ideas in a clear and accessible way. Seeking opportunities to strengthen my technical, research, and writing abilities while building toward a career as an AI Engineer.",
   careerObjective: "B.Tech Artificial Intelligence student at SVNIT Surat with a strong interest in artificial intelligence, emerging technologies, and technical problem-solving. I enjoy exploring how AI systems work and communicating complex ideas in a clear and accessible way. Seeking opportunities to strengthen my technical, research, and writing abilities while building toward a career as an AI Engineer.",
