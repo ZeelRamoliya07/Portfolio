@@ -7,7 +7,7 @@ interface CRTWrapperProps {
 }
 
 export default function CRTWrapper({ children }: CRTWrapperProps) {
-  const [crtActive, setCrtActive] = useState<boolean>(true);
+  const [crtActive, setCrtActive] = useState<boolean>(false);
 
   useEffect(() => {
     // We can also toggle class on the html/body element
