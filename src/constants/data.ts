@@ -5,10 +5,11 @@ export const BIO = {
   contact: {
     email: "zeelspeaks@gmail.com",
     phone: "+91-8980377968",
-    github: "https://github.com/ZeelRamoliya07", // Default placeholder from context
-    linkedin: "https://www.linkedin.com/in/zeel-ramoliya-b82b992aa/", // Default placeholder from context
+    github: "https://github.com/ZeelRamoliya07",
+    linkedin: "https://www.linkedin.com/in/zeel-ramoliya-b82b992aa/",
   },
-  careerObjective: "Aspiring AI Engineer aiming to apply machine learning, deep learning, and software engineering skills to solve real-world problems, while continuously learning and contributing to impactful technological innovations.",
+  profile: "B.Tech Artificial Intelligence student at SVNIT Surat with a strong interest in artificial intelligence, emerging technologies, and technical problem-solving. I enjoy exploring how AI systems work and communicating complex ideas in a clear and accessible way. Seeking opportunities to strengthen my technical, research, and writing abilities while building toward a career as an AI Engineer.",
+  careerObjective: "B.Tech Artificial Intelligence student at SVNIT Surat with a strong interest in artificial intelligence, emerging technologies, and technical problem-solving. I enjoy exploring how AI systems work and communicating complex ideas in a clear and accessible way. Seeking opportunities to strengthen my technical, research, and writing abilities while building toward a career as an AI Engineer.",
   areasOfInterest: [
     "Artificial Intelligence",
     "Machine Learning",
@@ -56,15 +57,57 @@ export const EDUCATION = [
 
 export const PROJECTS = [
   {
-    title: "DineEase",
-    desc: "Built the front-end for a full-fledged restaurant management platform covering bookings, orders, and a customer ratings system.",
-    role: "Frontend Developer (Group Project)",
-    live: "", // Demo/Repo link placeholders
-    repo: "https://github.com/ZeelRamoliya07/DineEase", 
-    tech: ["HTML", "Tailwind CSS", "JavaScript", "Django"],
+    title: "Reward Poisoning Detection in RLHF",
+    desc: "Exploring the problem of poisoned or manipulated preference data in Reinforcement Learning from Human Feedback (RLHF).",
+    role: "Academic Project",
+    status: "Ongoing",
+    live: "",
+    repo: "",
+    tech: ["RLHF", "Reinforcement Learning", "AI Safety", "Python"],
     bullets: [
-      "Designed and implemented responsive, user-friendly UI templates and integrated them with Django views to support end-to-end restaurant operations.",
-      "Collaborated with teammates using Git/GitHub for version control and deployed the final application on Render."
+      "Exploring the problem of poisoned or manipulated preference data in Reinforcement Learning from Human Feedback (RLHF).",
+      "Investigating approaches for detecting potential poisoning and understanding its impact on model behavior."
+    ]
+  },
+  {
+    title: "Clinical-E2: Explainable EEG-to-Emotion Reasoning",
+    desc: "Exploring explainability and reasoning approaches for EEG-based emotion recognition.",
+    role: "Academic Project",
+    status: "Ongoing",
+    live: "",
+    repo: "",
+    tech: ["Explainable AI", "EEG", "Deep Learning", "Python"],
+    bullets: [
+      "Exploring explainability and reasoning approaches for EEG-based emotion recognition.",
+      "Studying how AI predictions can be made more interpretable and clinically meaningful."
+    ]
+  },
+  {
+    title: "Semi-Supervised Learning for Multi-Label Cardiovascular Disease Prediction",
+    desc: "Exploring semi-supervised learning for predicting multiple cardiovascular conditions from clinical data.",
+    role: "Academic Project",
+    status: "Ongoing",
+    live: "",
+    repo: "",
+    tech: ["Semi-Supervised Learning", "Machine Learning", "Healthcare AI", "Python"],
+    bullets: [
+      "Exploring semi-supervised learning for predicting multiple cardiovascular conditions from clinical data.",
+      "Investigating challenges involved in multi-label prediction and learning from partially labeled datasets."
+    ]
+  },
+  {
+    title: "DineEase – Restaurant Management System",
+    desc: "Built the front-end for a restaurant management platform using HTML, Tailwind CSS, and JavaScript on top of a Django backend.",
+    role: "Frontend Developer (Group Project)",
+    status: "Completed",
+    live: "",
+    repo: "https://github.com/ZeelRamoliya07/DineEase",
+    tech: ["HTML", "Tailwind CSS", "JavaScript", "Django", "Render"],
+    bullets: [
+      "Built the front-end for a restaurant management platform using HTML, Tailwind CSS, and JavaScript on top of a Django backend, covering bookings, orders, and customer ratings.",
+      "Designed responsive UI templates and integrated them with Django views to support end-to-end restaurant operations.",
+      "Collaborated with teammates using Git/GitHub and deployed the application on Render."
     ]
   }
 ] as const;
+

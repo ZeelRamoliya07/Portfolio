@@ -258,8 +258,8 @@ export default function Home() {
                       </div>
 
                       {/* Action Links */}
-                      <div className="flex gap-2">
-                        {proj.live && (
+                      <div className="flex gap-2 items-center">
+                        {proj.live ? (
                           <a
                             href={proj.live}
                             target="_blank"
@@ -268,15 +268,22 @@ export default function Home() {
                           >
                             DEMO
                           </a>
-                        )}
-                        <a
-                          href={proj.repo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5 bg-[#ff007f]"
-                        >
-                          GITHUB
-                        </a>
+                        ) : null}
+                        {proj.repo ? (
+                          <a
+                            href={proj.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5 bg-[#ff007f]"
+                          >
+                            GITHUB
+                          </a>
+                        ) : null}
+                        {!proj.live && !proj.repo ? (
+                          <span className="text-[9px] font-pixel-heading px-2 py-1 bg-[#1d1d3b] text-[#39ff14] border border-[#39ff14]/50">
+                            ONGOING RESEARCH
+                          </span>
+                        ) : null}
                       </div>
                     </div>
                   </div>
