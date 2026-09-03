@@ -1,5 +1,6 @@
 export const BIO = {
   name: "Ramoliya Zeel Hirenbhai",
+  avatar: "/profile.jpg", // Place your photo named profile.jpg inside the public/ folder
   title: "Aspiring AI Engineer",
   tagline: "Bachelor of Technology in Artificial Intelligence @ Sardar Vallabhbhai National Institute of Technology, Surat",
   contact: {
