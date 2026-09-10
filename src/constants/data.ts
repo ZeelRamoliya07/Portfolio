@@ -48,12 +48,19 @@ export const EDUCATION = [
       start: "2024",
       end: "2028",
     },
-    grade: "CGPA: 7.86",
-    details: [
-      "JEE Advanced 2024: All India Rank 14603",
-      "JEE Main 2024: 99.35 Percentile, All India Rank 10398"
-    ]
+    grade: "CGPA: 7.86 (Present)",
+    details: []
   }
+] as const;
+
+export const ACHIEVEMENTS = [
+  "JEE Advanced 2024: All India Rank 14603",
+  "JEE Main 2024: 99.35 Percentile, All India Rank 10398"
+] as const;
+
+export const RESPONSIBILITIES = [
+  { title: "Executive", organization: "ACM Student Chapter, NIT Surat", period: "Sept 2025 - Present" },
+  { title: "Co-Head", organization: "Mindbend, NIT Surat", period: "Oct 2025 - Present" }
 ] as const;
 
 export const PROJECTS = [
@@ -67,7 +74,8 @@ export const PROJECTS = [
     tech: ["RLHF", "Reinforcement Learning", "AI Safety", "Python"],
     bullets: [
       "Exploring the problem of poisoned or manipulated preference data in Reinforcement Learning from Human Feedback (RLHF).",
-      "Investigating approaches for detecting potential poisoning and understanding its impact on model behavior."
+      "Investigating approaches for detecting potential poisoning and understanding its impact on model behavior.",
+      "Analyzing vulnerabilities in RLHF systems and developing defense mechanisms against adversarial attacks on preference data."
     ]
   },
   {
@@ -80,7 +88,8 @@ export const PROJECTS = [
     tech: ["Explainable AI", "EEG", "Deep Learning", "Python"],
     bullets: [
       "Exploring explainability and reasoning approaches for EEG-based emotion recognition.",
-      "Studying how AI predictions can be made more interpretable and clinically meaningful."
+      "Studying how AI predictions can be made more interpretable and clinically meaningful.",
+      "Implementing interpretable ML techniques to generate human-readable explanations for emotion classification from brain signals."
     ]
   },
   {
@@ -93,7 +102,8 @@ export const PROJECTS = [
     tech: ["Semi-Supervised Learning", "Machine Learning", "Healthcare AI", "Python"],
     bullets: [
       "Exploring semi-supervised learning for predicting multiple cardiovascular conditions from clinical data.",
-      "Investigating challenges involved in multi-label prediction and learning from partially labeled datasets."
+      "Investigating challenges involved in multi-label prediction and learning from partially labeled datasets.",
+      "Developing robust models that leverage unlabeled data to improve prediction accuracy for rare cardiovascular disease combinations."
     ]
   },
   {

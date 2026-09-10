@@ -2,9 +2,11 @@
 
 import React, { useState } from "react";
 import {
+  ACHIEVEMENTS,
   BIO,
   EDUCATION,
   PROJECTS,
+  RESPONSIBILITIES,
 } from "../constants/data";
 import PixelCard from "../components/PixelCard";
 import SkillGrid from "../components/SkillGrid";
@@ -184,13 +186,15 @@ export default function Home() {
                     {edu.institute}
                   </p>
                   <p className="text-base text-[#39ff14] font-bold">
-                    Grade: {edu.grade}
+                    {edu.grade}
                   </p>
-                  <ul className="list-disc pl-5 font-mono text-sm space-y-1 text-[#f0f0f8]/80">
-                    {edu.details.map((detail, idx) => (
-                      <li key={idx}>{detail}</li>
-                    ))}
-                  </ul>
+                  {edu.details.length > 0 ? (
+                    <ul className="list-disc pl-5 font-mono text-sm space-y-1 text-[#f0f0f8]/80">
+                      {edu.details.map((detail, idx) => (
+                        <li key={idx}>{detail}</li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </div>
               ))}
 
@@ -231,6 +235,35 @@ export default function Home() {
               Skills & Equipment Inventory
             </h3>
             <SkillGrid />
+          </div>
+
+          {/* Achievements and leadership */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-6 uppercase tracking-wider">
+                Achievements
+              </h3>
+              <ul className="list-disc pl-5 font-mono text-sm space-y-3 text-[#f0f0f8]/85">
+                {ACHIEVEMENTS.map((achievement) => (
+                  <li key={achievement}>{achievement}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-6 uppercase tracking-wider">
+                Positions of Responsibility
+              </h3>
+              <div className="space-y-4 font-mono text-sm">
+                {RESPONSIBILITIES.map((position) => (
+                  <div key={`${position.title}-${position.organization}`} className="border-l-4 border-[#00e5ff] pl-3">
+                    <p className="text-[#00e5ff] font-bold">{position.title}</p>
+                    <p className="text-[#f0f0f8]/85">{position.organization}</p>
+                    <p className="text-[#a0a0c0] text-xs">{position.period}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Projects Showcase */}
