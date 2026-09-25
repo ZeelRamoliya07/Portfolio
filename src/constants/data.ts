@@ -1,19 +1,21 @@
 export const BIO = {
-  name: "Ramoliya Zeel Hirenbhai",
+  name: "RAMOLIYA ZEEL HIRENBHAI",
   avatar: "/profile.jpg", // Place your photo named profile.jpg inside the public/ folder
-  title: "Aspiring AI Engineer",
-  tagline: "Bachelor of Technology in Artificial Intelligence @ Sardar Vallabhbhai National Institute of Technology, Surat",
+  title: "B.Tech in Artificial Intelligence",
+  tagline: "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat",
   contact: {
     email: "zeelspeaks@gmail.com",
     phone: "+91-8980377968",
     github: "https://github.com/ZeelRamoliya07",
     linkedin: "https://www.linkedin.com/in/zeel-ramoliya",
+    location: "Surat, India",
   },
-  profile: "B.Tech Artificial Intelligence student at SVNIT Surat with a strong interest in artificial intelligence, emerging technologies, and technical problem-solving. I enjoy exploring how AI systems work and communicating complex ideas in a clear and accessible way. Seeking opportunities to strengthen my technical, research, and writing abilities while building toward a career as an AI Engineer.",
-  careerObjective: "B.Tech Artificial Intelligence student at SVNIT Surat with a strong interest in artificial intelligence, emerging technologies, and technical problem-solving. I enjoy exploring how AI systems work and communicating complex ideas in a clear and accessible way. Seeking opportunities to strengthen my technical, research, and writing abilities while building toward a career as an AI Engineer.",
+  profile: "B.Tech Artificial Intelligence student at SVNIT Surat with a strong foundation in machine learning, software engineering, FastAPI, React, and data systems.",
+  careerObjective: "B.Tech Artificial Intelligence student at SVNIT Surat passionate about building scalable AI/ML pipelines, full-stack web applications, and backend systems. Experienced with FastAPI, React, machine learning model evaluation, and automated testing.",
   areasOfInterest: [
     "Artificial Intelligence",
     "Machine Learning",
+    "Full-Stack Web Development",
     "Data Structures & Algorithms"
   ],
   keyCourses: {
@@ -34,22 +36,44 @@ export const BIO = {
 };
 
 export const SKILLS = [
-  { name: "C", category: "Programming Languages", score: 85 },
-  { name: "C++", category: "Programming Languages", score: 90 },
-  { name: "Python", category: "Programming Languages", score: 92 },
-  { name: "MySQL", category: "Databases", score: 85 },
+  // Languages
+  { name: "C", category: "Languages", score: 85 },
+  { name: "C++", category: "Languages", score: 88 },
+  { name: "Python", category: "Languages", score: 95 },
+  { name: "JavaScript", category: "Languages", score: 85 },
+  // ML/AI
+  { name: "NumPy", category: "ML/AI", score: 90 },
+  { name: "Pandas", category: "ML/AI", score: 90 },
+  { name: "Scikit-learn", category: "ML/AI", score: 88 },
+  { name: "Matplotlib", category: "ML/AI", score: 85 },
+  { name: "Seaborn", category: "ML/AI", score: 85 },
+  { name: "Jupyter Notebook", category: "ML/AI", score: 90 },
+  // Backend/Data
+  { name: "FastAPI", category: "Backend/Data", score: 90 },
+  { name: "MySQL", category: "Backend/Data", score: 85 },
+  { name: "REST APIs", category: "Backend/Data", score: 92 },
+  { name: "Pydantic", category: "Backend/Data", score: 88 },
+  // Systems/Tools
+  { name: "React.js", category: "Systems/Tools", score: 88 },
+  { name: "Tailwind CSS", category: "Systems/Tools", score: 90 },
+  { name: "AWS", category: "Systems/Tools", score: 80 },
+  { name: "Git & GitHub", category: "Systems/Tools", score: 90 },
+  { name: "Pytest", category: "Systems/Tools", score: 85 },
+  { name: "Playwright", category: "Systems/Tools", score: 82 },
 ] as const;
 
 export const EDUCATION = [
   {
-    degree: "B.Tech, Artificial Intelligence",
-    institute: "Sardar Vallabhbhai National Institute of Technology, Surat",
+    degree: "B.Tech in Artificial Intelligence",
+    institute: "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat",
     period: {
       start: "2024",
       end: "2028",
     },
     grade: "CGPA: 7.86 (Present)",
-    details: []
+    details: [
+      "Relevant Coursework: Data Structures & Algorithms, Design & Analysis of Algorithms, Computer Organization & Architecture, Operating Systems, Computer Networks, Database Management Systems, Computer Science Fundamentals, Artificial Intelligence, Introduction to Machine Learning."
+    ]
   }
 ] as const;
 
@@ -59,65 +83,54 @@ export const ACHIEVEMENTS = [
 ] as const;
 
 export const RESPONSIBILITIES = [
-  { title: "Executive", organization: "ACM Student Chapter, NIT Surat", period: "Sept 2025 - Present" },
-  { title: "Co-Head", organization: "Mindbend, NIT Surat", period: "Oct 2025 - Present" }
+  { title: "Executive", organization: "ACM Student Chapter, NIT Surat", period: "Sept 2025 – Present" },
+  { title: "Co-Head", organization: "Mindbend, NIT Surat", period: "Oct 2025 – Present" }
 ] as const;
 
 export const PROJECTS = [
   {
-    title: "Reward Poisoning Detection in RLHF",
-    desc: "Exploring the problem of poisoned or manipulated preference data in Reinforcement Learning from Human Feedback (RLHF).",
-    role: "Academic Project",
-    status: "Ongoing",
-    live: "",
-    repo: "",
-    tech: ["RLHF", "Reinforcement Learning", "AI Safety", "Python"],
-    bullets: [
-      "Exploring the problem of poisoned or manipulated preference data in Reinforcement Learning from Human Feedback (RLHF).",
-      "Investigating approaches for detecting potential poisoning and understanding its impact on model behavior.",
-      "Analyzing vulnerabilities in RLHF systems and developing defense mechanisms against adversarial attacks on preference data."
-    ]
-  },
-  {
-    title: "Clinical-E2: Explainable EEG-to-Emotion Reasoning",
-    desc: "Exploring explainability and reasoning approaches for EEG-based emotion recognition.",
-    role: "Academic Project",
-    status: "Ongoing",
-    live: "",
-    repo: "",
-    tech: ["Explainable AI", "EEG", "Deep Learning", "Python"],
-    bullets: [
-      "Exploring explainability and reasoning approaches for EEG-based emotion recognition.",
-      "Studying how AI predictions can be made more interpretable and clinically meaningful.",
-      "Implementing interpretable ML techniques to generate human-readable explanations for emotion classification from brain signals."
-    ]
-  },
-  {
-    title: "Semi-Supervised Learning for Multi-Label Cardiovascular Disease Prediction",
-    desc: "Exploring semi-supervised learning for predicting multiple cardiovascular conditions from clinical data.",
-    role: "Academic Project",
-    status: "Ongoing",
-    live: "",
-    repo: "",
-    tech: ["Semi-Supervised Learning", "Machine Learning", "Healthcare AI", "Python"],
-    bullets: [
-      "Exploring semi-supervised learning for predicting multiple cardiovascular conditions from clinical data.",
-      "Investigating challenges involved in multi-label prediction and learning from partially labeled datasets.",
-      "Developing robust models that leverage unlabeled data to improve prediction accuracy for rare cardiovascular disease combinations."
-    ]
-  },
-  {
-    title: "DineEase – Restaurant Management System",
-    desc: "Built the front-end for a restaurant management platform using HTML, Tailwind CSS, and JavaScript on top of a Django backend.",
-    role: "Frontend Developer (Group Project)",
+    title: "ServiceHub - Business Management SaaS Platform",
+    desc: "A full-stack business management SaaS platform managing workflow from customer service requests to employee assignment and completion.",
+    role: "Full Stack Developer",
     status: "Completed",
     live: "",
-    repo: "https://github.com/ZeelRamoliya07/DineEase",
-    tech: ["HTML", "Tailwind CSS", "JavaScript", "Django", "Render"],
+    repo: "https://github.com/ZeelRamoliya07",
+    tech: ["React.js", "Tailwind CSS", "FastAPI", "MySQL", "REST API", "AWS", "Pytest", "Playwright"],
     bullets: [
-      "Built the front-end for a restaurant management platform using HTML, Tailwind CSS, and JavaScript on top of a Django backend, covering bookings, orders, and customer ratings.",
-      "Designed responsive UI templates and integrated them with Django views to support end-to-end restaurant operations.",
-      "Collaborated with teammates using Git/GitHub and deployed the application on Render."
+      "Built a full-stack business management SaaS platform managing the workflow from customer service requests through employee assignment, appointments, and completion.",
+      "Developed a RESTful FastAPI backend with role-based access control, database integration, and structured business logic for service-based businesses.",
+      "Built a responsive React and Tailwind CSS frontend integrated with backend APIs for dynamic, database-driven operations and analytics.",
+      "Implemented automated testing and deployment workflows using Pytest, Playwright, AWS, and Git/GitHub."
+    ]
+  },
+  {
+    title: "Customer Churn Prediction",
+    desc: "An end-to-end machine learning pipeline for predicting customer churn with complete evaluation and structured experiments.",
+    role: "ML Developer",
+    status: "Completed",
+    live: "",
+    repo: "https://github.com/ZeelRamoliya07",
+    tech: ["Python", "NumPy", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn"],
+    bullets: [
+      "Developed an end-to-end machine learning pipeline for predicting customer churn, covering data preprocessing, exploratory analysis, feature preparation, model training, and evaluation.",
+      "Used NumPy and Pandas for data manipulation and analysis, with Scikit-learn for supervised classification and model evaluation.",
+      "Compared classification models using Precision, Recall, F1-Score, ROC-AUC, and confusion matrices to evaluate predictive performance.",
+      "Structured the project into reproducible data-processing, modeling, evaluation, and experiment components for systematic ML development."
+    ]
+  },
+  {
+    title: "Fraud Detection System",
+    desc: "An end-to-end fraud detection system for highly imbalanced credit card transaction data with optimized decision thresholds.",
+    role: "Full Stack ML Developer",
+    status: "Completed",
+    live: "",
+    repo: "https://github.com/ZeelRamoliya07",
+    tech: ["Python", "NumPy", "Pandas", "Scikit-learn", "FastAPI", "React", "Tailwind CSS", "REST API", "Pytest"],
+    bullets: [
+      "Built an end-to-end fraud detection system for highly imbalanced credit-card transaction data with validation, preprocessing, stratified splitting, and model evaluation.",
+      "Compared Logistic Regression, Decision Tree, and Random Forest models using Precision, Recall, F1-Score, PR-AUC, ROC-AUC, and confusion matrices.",
+      "Optimized the Random Forest decision threshold from 0.50 to 0.70, increasing precision from 75.26% to 88.61% while reducing false positives from 24 to 9 on the evaluation set.",
+      "Exposed the trained ML pipeline through a FastAPI REST API and built a React frontend for transaction analysis with fraud probability and risk-level outputs."
     ]
   }
 ] as const;
