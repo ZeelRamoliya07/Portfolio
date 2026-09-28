@@ -93,7 +93,7 @@ export const PROJECTS = [
     desc: "A full-stack business management SaaS platform managing workflow from customer service requests to employee assignment and completion.",
     role: "Full Stack Developer",
     status: "Completed",
-    live: "",
+    live: "https://service-hub-zeel.vercel.app",
     repo: "https://github.com/ZeelRamoliya07",
     tech: ["React.js", "Tailwind CSS", "FastAPI", "MySQL", "REST API", "AWS", "Pytest", "Playwright"],
     bullets: [

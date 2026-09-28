@@ -238,23 +238,23 @@ export default function Home() {
           </div>
 
           {/* Achievements and leadership */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-6 uppercase tracking-wider">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <div className="border-4 border-black bg-[#171730] p-4 md:p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-4 uppercase tracking-wider">
                 Achievements
               </h3>
-              <ul className="list-disc pl-5 font-mono text-sm space-y-3 text-[#f0f0f8]/85">
+              <ul className="list-disc pl-5 font-mono text-sm space-y-2 text-[#f0f0f8]/85">
                 {ACHIEVEMENTS.map((achievement) => (
                   <li key={achievement}>{achievement}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-6 uppercase tracking-wider">
+            <div className="border-4 border-black bg-[#171730] p-4 md:p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-4 uppercase tracking-wider">
                 Positions of Responsibility
               </h3>
-              <div className="space-y-4 font-mono text-sm">
+              <div className="space-y-3 font-mono text-sm">
                 {RESPONSIBILITIES.map((position) => (
                   <div key={`${position.title}-${position.organization}`} className="border-l-4 border-[#00e5ff] pl-3">
                     <p className="text-[#00e5ff] font-bold">{position.title}</p>
@@ -267,13 +267,13 @@ export default function Home() {
           </div>
 
           {/* Projects Showcase */}
-          <div className="border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-6 uppercase tracking-wider">
+          <div className="border-4 border-black bg-[#171730] p-4 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-4 md:mb-6 uppercase tracking-wider">
               Featured Projects
             </h3>
 
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 {(showAllProjects ? PROJECTS : PROJECTS.slice(0, 5)).map((proj) => (
                   <div
                     key={proj.title}
@@ -288,17 +288,17 @@ export default function Home() {
                           {proj.role}
                         </span>
                       </div>
-                      <p className="font-mono text-sm text-[#f0f0f8]/90 mb-4">
+                      <p className="font-mono text-sm text-[#f0f0f8]/90 mb-3">
                         {proj.desc}
                       </p>
-                      <ul className="list-disc pl-4 font-mono text-xs text-[#a0a0c0] mb-4 space-y-1">
+                      <ul className="list-disc pl-4 font-mono text-xs text-[#a0a0c0] mb-3 space-y-1">
                         {proj.bullets.map((b, idx) => (
                           <li key={idx}>{b}</li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {/* Tech stack badges */}
                       <div className="flex flex-wrap gap-1.5">
                         {proj.tech.map((t) => (
@@ -320,7 +320,7 @@ export default function Home() {
                             rel="noopener noreferrer"
                             className="pixel-btn text-[9px] py-1 px-2.5 bg-[#39ff14]"
                           >
-                            DEMO
+                            LIVE
                           </a>
                         ) : null}
                         {proj.repo ? (
