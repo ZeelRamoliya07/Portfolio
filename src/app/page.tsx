@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import {
-  ACHIEVEMENTS,
   BIO,
   EDUCATION,
   PROJECTS,
@@ -161,6 +160,22 @@ export default function Home() {
               <span>$ </span><span className="pixel-blink">█</span>
             </div>
           </div>
+
+          {/* Positions of Responsibility Card in Sidebar */}
+          <div className="border-4 border-black bg-[#171730] p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-4 uppercase tracking-wider">
+              Positions of Responsibility
+            </h3>
+            <div className="space-y-3 font-mono text-xs md:text-sm">
+              {RESPONSIBILITIES.map((position) => (
+                <div key={`${position.title}-${position.organization}`} className="border-l-4 border-[#00e5ff] pl-3 py-0.5">
+                  <p className="text-[#00e5ff] font-bold">{position.title}</p>
+                  <p className="text-[#f0f0f8]/85">{position.organization}</p>
+                  <p className="text-[#a0a0c0] text-xs">{position.period}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* Right Column: Main Resume Data (8 cols) */}
@@ -237,130 +252,97 @@ export default function Home() {
             <SkillGrid />
           </div>
 
+          {/* Projects Showcase */}
+          <div className="border-4 border-black bg-[#171730] p-5 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-5 uppercase tracking-wider">
+              Featured Projects
+            </h3>
+
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {(showAllProjects ? PROJECTS : PROJECTS.slice(0, 5)).map((proj) => (
+                  <div
+                    key={proj.title}
+                    className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000] hover:shadow-[4px_4px_0_0_#39ff14] transition-all"
+                  >
+                    <div>
+                      <div className="flex justify-between items-start gap-2 mb-2 pb-2 border-b border-[#23234a]">
+                        <h4 className="font-pixel-heading text-xs text-[#00e5ff] tracking-wide">
+                          {proj.title}
+                        </h4>
+                        <span className="text-[9px] font-mono text-[#a0a0c0] text-right shrink-0">
+                          {proj.role}
+                        </span>
+                      </div>
+                      <p className="font-mono text-xs md:text-sm text-[#f0f0f8]/90 mb-3">
+                        {proj.desc}
+                      </p>
+                      <ul className="list-disc pl-4 font-mono text-xs text-[#a0a0c0] mb-3 space-y-1">
+                        {proj.bullets.map((b, idx) => (
+                          <li key={idx}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="space-y-3 pt-1">
+                      {/* Tech stack badges */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {proj.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="px-1.5 py-0.5 text-[8px] font-pixel-heading bg-[#23234a] text-[#ffff00] border border-black"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Links */}
+                      <div className="flex flex-wrap gap-2 items-center pt-1">
+                        {proj.live ? (
+                          <a
+                            href={proj.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="pixel-btn text-[9px] py-1 px-2.5 bg-[#39ff14] text-black font-bold uppercase"
+                          >
+                            LIVE
+                          </a>
+                        ) : null}
+                        {proj.repo ? (
+                          <a
+                            href={proj.repo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5 bg-[#ff007f] text-white font-bold uppercase"
+                          >
+                            GITHUB
+                          </a>
+                        ) : null}
+                        {!proj.live && !proj.repo ? (
+                          <span className="text-[9px] font-pixel-heading px-2 py-1 bg-[#1d1d3b] text-[#39ff14] border border-[#39ff14]/50">
+                            ONGOING RESEARCH
+                          </span>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {PROJECTS.length > 5 && (
+                <div className="flex justify-center mt-6">
+                  <button
+                    onClick={() => setShowAllProjects(!showAllProjects)}
+                    className="pixel-btn"
+                  >
+                    {showAllProjects ? "SHOW LESS PROJECTS" : "SHOW MORE PROJECTS"}
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </section>
       </main>
-
-      {/* Full-width container for Achievements & Featured Projects to fill empty space on left */}
-      <div className="w-full max-w-6xl mt-8 space-y-8">
-        {/* Achievements and leadership */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border-4 border-black bg-[#171730] p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-4 uppercase tracking-wider">
-              Achievements
-            </h3>
-            <ul className="list-disc pl-5 font-mono text-xs md:text-sm space-y-2 text-[#f0f0f8]/85">
-              {ACHIEVEMENTS.map((achievement) => (
-                <li key={achievement}>{achievement}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="border-4 border-black bg-[#171730] p-5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-4 uppercase tracking-wider">
-              Positions of Responsibility
-            </h3>
-            <div className="space-y-3 font-mono text-xs md:text-sm">
-              {RESPONSIBILITIES.map((position) => (
-                <div key={`${position.title}-${position.organization}`} className="border-l-4 border-[#00e5ff] pl-3 py-0.5">
-                  <p className="text-[#00e5ff] font-bold">{position.title}</p>
-                  <p className="text-[#f0f0f8]/85">{position.organization}</p>
-                  <p className="text-[#a0a0c0] text-xs">{position.period}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Projects Showcase */}
-        <div className="border-4 border-black bg-[#171730] p-5 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-          <h3 className="font-pixel-heading text-xs md:text-sm text-[#ffff00] mb-5 uppercase tracking-wider">
-            Featured Projects
-          </h3>
-
-          <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {(showAllProjects ? PROJECTS : PROJECTS.slice(0, 5)).map((proj) => (
-                <div
-                  key={proj.title}
-                  className="border-2 border-black bg-[#0b0b1a] p-4 flex flex-col justify-between shadow-[4px_4px_0_0_#000] hover:shadow-[4px_4px_0_0_#39ff14] transition-all"
-                >
-                  <div>
-                    <div className="flex justify-between items-start gap-2 mb-2 pb-2 border-b border-[#23234a]">
-                      <h4 className="font-pixel-heading text-xs text-[#00e5ff] tracking-wide">
-                        {proj.title}
-                      </h4>
-                      <span className="text-[9px] font-mono text-[#a0a0c0] text-right shrink-0">
-                        {proj.role}
-                      </span>
-                    </div>
-                    <p className="font-mono text-xs md:text-sm text-[#f0f0f8]/90 mb-3">
-                      {proj.desc}
-                    </p>
-                    <ul className="list-disc pl-4 font-mono text-xs text-[#a0a0c0] mb-3 space-y-1">
-                      {proj.bullets.map((b, idx) => (
-                        <li key={idx}>{b}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="space-y-3 pt-1">
-                    {/* Tech stack badges */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {proj.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="px-1.5 py-0.5 text-[8px] font-pixel-heading bg-[#23234a] text-[#ffff00] border border-black"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Action Links */}
-                    <div className="flex flex-wrap gap-2 items-center pt-1">
-                      {proj.live ? (
-                        <a
-                          href={proj.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="pixel-btn text-[9px] py-1 px-2.5 bg-[#39ff14] text-black font-bold uppercase"
-                        >
-                          LIVE
-                        </a>
-                      ) : null}
-                      {proj.repo ? (
-                        <a
-                          href={proj.repo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="pixel-btn pixel-btn-secondary text-[9px] py-1 px-2.5 bg-[#ff007f] text-white font-bold uppercase"
-                        >
-                          GITHUB
-                        </a>
-                      ) : null}
-                      {!proj.live && !proj.repo ? (
-                        <span className="text-[9px] font-pixel-heading px-2 py-1 bg-[#1d1d3b] text-[#39ff14] border border-[#39ff14]/50">
-                          ONGOING RESEARCH
-                        </span>
-                      ) : null}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            {PROJECTS.length > 5 && (
-              <div className="flex justify-center mt-6">
-                <button
-                  onClick={() => setShowAllProjects(!showAllProjects)}
-                  className="pixel-btn"
-                >
-                  {showAllProjects ? "SHOW LESS PROJECTS" : "SHOW MORE PROJECTS"}
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
 
       {/* Footer / Arcade Cabinet bottom */}
       <footer className="w-full max-w-6xl mt-12 border-4 border-black bg-[#171730] p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-sm">

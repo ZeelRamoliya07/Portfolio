@@ -94,7 +94,7 @@ export const PROJECTS = [
     role: "Full Stack Developer",
     status: "Completed",
     live: "https://service-hub-zeel.vercel.app",
-    repo: "https://github.com/ZeelRamoliya07",
+    repo: "https://github.com/ZeelRamoliya07/Service-Hub",
     tech: ["React.js", "Tailwind CSS", "FastAPI", "MySQL", "REST API", "AWS", "Pytest", "Playwright"],
     bullets: [
       "Built a full-stack business management SaaS platform managing the workflow from customer service requests through employee assignment, appointments, and completion.",
@@ -109,7 +109,7 @@ export const PROJECTS = [
     role: "ML Developer",
     status: "Completed",
     live: "",
-    repo: "https://github.com/ZeelRamoliya07",
+    repo: "https://github.com/ZeelRamoliya07/churn_intte",
     tech: ["Python", "NumPy", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn"],
     bullets: [
       "Developed an end-to-end machine learning pipeline for predicting customer churn, covering data preprocessing, exploratory analysis, feature preparation, model training, and evaluation.",
@@ -124,7 +124,7 @@ export const PROJECTS = [
     role: "Full Stack ML Developer",
     status: "Completed",
     live: "",
-    repo: "https://github.com/ZeelRamoliya07",
+    repo: "https://github.com/ZeelRamoliya07/Fraud-detection-system",
     tech: ["Python", "NumPy", "Pandas", "Scikit-learn", "FastAPI", "React", "Tailwind CSS", "REST API", "Pytest"],
     bullets: [
       "Built an end-to-end fraud detection system for highly imbalanced credit-card transaction data with validation, preprocessing, stratified splitting, and model evaluation.",
