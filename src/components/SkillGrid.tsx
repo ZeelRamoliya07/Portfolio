@@ -19,7 +19,20 @@ export default function SkillGrid() {
     setShowAll(false);
   };
 
-  const displayedSkills = showAll ? filteredSkills : filteredSkills.slice(0, 5);
+  // Default set of 9 skills: 3 Languages, 3 ML/AI, 2 Backend/Data, 1 Systems/Tools
+  const getDefaultSkills = () => {
+    const langs = SKILLS.filter((s) => s.category === "Languages").slice(0, 3);
+    const ml = SKILLS.filter((s) => s.category === "ML/AI").slice(0, 3);
+    const backend = SKILLS.filter((s) => s.category === "Backend/Data").slice(0, 2);
+    const tools = SKILLS.filter((s) => s.category === "Systems/Tools").slice(0, 1);
+    return [...langs, ...ml, ...backend, ...tools];
+  };
+
+  const displayedSkills = showAll
+    ? filteredSkills
+    : selectedCategory === "All"
+    ? getDefaultSkills()
+    : filteredSkills.slice(0, 9);
 
   return (
     <div className="space-y-6">
@@ -75,16 +88,14 @@ export default function SkillGrid() {
         })}
       </div>
 
-      {filteredSkills.length > 5 && (
-        <div className="flex justify-center pt-4">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="pixel-btn"
-          >
-            {showAll ? "SHOW LESS SKILLS" : "SHOW MORE SKILLS"}
-          </button>
-        </div>
-      )}
+      <div className="flex justify-center pt-4">
+        <button
+          onClick={() => setShowAll(!showAll)}
+          className="pixel-btn"
+        >
+          {showAll ? "SHOW LESS SKILLS" : "SHOW MORE SKILLS"}
+        </button>
+      </div>
     </div>
   );
 }
